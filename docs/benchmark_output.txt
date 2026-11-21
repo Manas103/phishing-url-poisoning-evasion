@@ -1,0 +1,70 @@
+raw corpus rows: 235795 (label source: UCI PhiUSIIL, see data/manifest.json)
+sampled corpus: 50000 rows (0.4281 phishing fraction)
+train rows: 35000  test rows: 15000
+
+== clean model ==
+{
+  "accuracy": 0.9997333333333334,
+  "precision": 1.0,
+  "recall": 0.9993770440741317,
+  "tp": 6417,
+  "fp": 0,
+  "tn": 8579,
+  "fn": 4
+}
+
+== backdoor ==
+poison_rate=0.005 nominal, 175 rows stamped (True all relabeled legitimate)
+poisoned-model clean metrics: {
+  "accuracy": 0.9997333333333334,
+  "precision": 1.0,
+  "recall": 0.9993770440741317,
+  "tp": 6417,
+  "fp": 0,
+  "tn": 8579,
+  "fn": 4
+}
+clean accuracy delta vs unpoisoned model: 0.00 points
+backdoor: {
+  "n_phishing_test_rows": 6421,
+  "backdoor_success_rate": 0.9191714686185952,
+  "baseline_false_benign_rate_unstamped": 0.0006229559258682448
+}
+
+== spectral-signature defense ==
+{
+  "n_scored": 20086,
+  "n_flagged": 262,
+  "n_true_poison": 175,
+  "n_caught": 73,
+  "catch_rate": 0.41714285714285715
+}
+screened training rows: 34738 (removed 262)
+post-screening clean metrics: {
+  "accuracy": 0.9996666666666667,
+  "precision": 1.0,
+  "recall": 0.9992213050926647,
+  "tp": 6416,
+  "fp": 0,
+  "tn": 8579,
+  "fn": 5
+}
+clean-accuracy cost of the screening defense vs. the original unpoisoned model: 0.01 points
+
+== evasion ==
+n_evaluated=1500
+recall before evasion: 1.0000
+recall after evasion: 0.9187
+mean search steps used: 12.38
+
+== adversarial training ==
+recall on the SAME evasion set after adversarial training: 0.9900
+adversarially-trained model's own clean metrics: {
+  "accuracy": 0.9997333333333334,
+  "precision": 0.999844212494158,
+  "recall": 0.9995327830555988,
+  "tp": 6418,
+  "fp": 1,
+  "tn": 8578,
+  "fn": 3
+}

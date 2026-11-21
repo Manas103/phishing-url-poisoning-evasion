@@ -1,0 +1,12 @@
+{
+  "name": "PhiUSIIL Phishing URL Dataset",
+  "source": "UCI Machine Learning Repository, dataset id 967",
+  "download_url": "https://archive.ics.uci.edu/static/public/967/phiusiil+phishing+url+dataset.zip",
+  "citation": "Prasad, A. and Chandra, S. (2024). PhiUSIIL: A diverse, large-scale dataset for phishing URL detection. Computers & Security. DOI 10.1016/j.cose.2023.103545.",
+  "license": "CC BY 4.0",
+  "zip_sha256": "0a639fd03aea6308c5b1c10c92aa23c2ce1505447a9137271865cd0badc9a59a",
+  "csv_filename": "PhiUSIIL_Phishing_URL_Dataset.csv",
+  "total_rows": 235795,
+  "label_meaning": "label == 1 is a legitimate URL, label == 0 is a phishing URL (confirmed directly against the real downloaded file, not assumed from documentation)",
+  "note": "The raw CSV (54 MB) is not committed to this repository; data_raw/ is gitignored. scripts/fetch_dataset.py re-downloads it and verifies zip_sha256 above against this exact file."
+}
